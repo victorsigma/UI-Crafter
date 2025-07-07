@@ -1,0 +1,1992 @@
+:root {
+    /* Grises y fondos */
+    --color-background: #494949;
+    --color-dark-bg: #1E1E1F;
+    --color-dark-bg-alt: #313233;
+    --color-mid-bg: #48494A;
+    --color-light-bg: #e6e8eb;
+    --color-gray-light: #D0D1D4;
+    --color-gray-hover: #B1B2B5;
+    --color-gray-dark: #5E5E5E;
+    --color-border-light: #ECEDEE;
+    --color-placeholder: #808080;
+
+    --toastify-color-dark: #5E5E5E;
+
+    /* Textos */
+    --color-text-light: #FFFFFF;
+    --color-text-dark: #1E1E1F;
+    --color-text-gray: #949494;
+
+    /* Verdes (primario) */
+    --color-green: #3C8527;
+    --color-green-hover: #1D4D13;
+    --color-green-light: #639D52;
+    --color-green-lighter: #779471;
+    --color-green-focus: #6CC349;
+
+    /* Rojos (peligro) */
+    --color-red: #CA3636;
+    --color-red-dark: #AD1D1D;
+    --color-red-light: #D55E5E;
+    --color-red-lighter: #D68E8E;
+
+    /* Amarillos (advertencia) */
+    --color-yellow: #ffc107;
+    --color-yellow-hover: #dfaf12;
+    --color-yellow-light: #CAAA48;
+    --color-yellow-lighter: #f3ce5d;
+
+    /* Violetas (info) */
+    --color-purple: #7345E5;
+    --color-purple-dark: #4A1CAC;
+    --color-purple-light: #A264F2;
+    --color-purple-lighter: #A864E6;
+
+    /* Tonos PE */
+    --color-pe-base: #C6C6C6;
+    --color-pe-dark: #504F4E;
+    --color-pe-border-light: #F7F7F7;
+    --color-pe-border-dark: #656465;
+    --color-pe-accent: #43A01C;
+
+    /* Scrollbars */
+    --scroll-track-bg: #434343;
+    --scroll-thumb-bg: #E6E8EB;
+    --scroll-thumb-border: #000000;
+
+    /* Misc */
+    --color-black: #000000;
+    --color-white: #FFFFFF;
+    --color-shadow: rgba(230, 0, 0, 0.1);
+}
+
+:root {
+    --radius-none: 0px;
+    --padding-sm: 0.2pc;
+    --padding-md: 0.25pc;
+    --padding-lg: 0.3pc;
+    --padding-xl: 0.4pc;
+
+    --border-sm: 0.15em;
+    --border-md: 0.2pc;
+    --border-lg: 0.3pc;
+    --border-xl: 0.4pc;
+
+    --font-size-md: 1.25em;
+    --font-size-lg: 1.75em;
+
+    --input-padding: 10px 20px;
+    --button-padding-sm: 10px 20px;
+    --button-padding: 20px 30px;
+    --scrollbar-width: 15px;
+}
+
+@font-face {
+    font-family: "Mc-Ten";
+    font-style: normal;
+    src: url("assets/fonts/mc-ten-lowercase-alt.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Minecraft";
+    font-style: normal;
+    src: url("assets/fonts/minecraft.ttf") format("truetype");
+}
+
+* {
+    font-weight: normal;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: var(--color-background);
+}
+
+.ore-header {
+    background-color: var(--color-light-bg);
+    padding: 2px;
+    text-align: center;
+    display: flex;
+    align-items: baseline;
+    border-bottom: var(--border-lg) solid var(--color-gray-hover);
+    font-family: "Mc-Ten", sans-serif;
+    font-size: var(--font-size-md);
+}
+
+.ore-header.ore-dark {
+    background-color: var(--color-dark-bg);
+    border-bottom: var(--border-lg) solid var(--color-mid-bg);
+}
+
+.ore-header__nav-list {
+    margin: 0px;
+    padding-block: 20px;
+    display: flex;
+    gap: 20px;
+}
+
+.ore-nav__item {
+    list-style: none;
+}
+
+.ore-nav__link {
+    text-decoration: none;
+    padding: 20px;
+    box-sizing: border-box;
+    color: var(--color-text-dark);
+    cursor: pointer;
+    user-select: none;
+}
+
+.ore-dark .ore-nav__link {
+    color: var(--color-white);
+}
+
+.ore-nav__link:active {
+    background-color: var(--color-gray-light);
+}
+
+.ore-dark .ore-nav__link:active {
+    background-color: var(--color-gray-dark);
+}
+
+.ore-nav__link.disabled {
+    color: var(--color-text-gray);
+    cursor: default;
+}
+
+.ore-nav__link.disabled:active {
+    background-color: transparent;
+}
+
+
+.ore-nav__dropdown-toggle::after {
+    display: inline-block;
+    margin-left: .255em;
+    vertical-align: .255em;
+    content: "";
+    border-top: .3em solid;
+    border-right: .3em solid transparent;
+    border-bottom: 0;
+    border-left: .3em solid transparent;
+}
+
+.ore-nav__dropdown-toggle.show::after {
+    rotate: 180deg;
+}
+
+
+.ore-nav__dropdown-menu {
+    display: none;
+    position: absolute;
+    list-style: none;
+    background-color: var(--color-light-bg);
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    padding: 0px;
+    z-index: 1;
+    border: var(--border-lg) solid var(--color-gray-hover);
+}
+
+.ore-dark .ore-nav__dropdown-menu {
+    background-color: var(--color-dark-bg);
+    border: var(--border-lg) solid var(--color-mid-bg);
+}
+
+
+.ore-nav__dropdown-menu.show {
+    display: block;
+}
+
+.ore-nav__dropdown-item {
+    display: block;
+    text-align: left;
+    text-decoration: none;
+    padding: 12px 16px;
+    color: var(--color-text-dark);
+    cursor: pointer;
+    user-select: none;
+}
+
+.ore-dark .ore-nav__dropdown-item {
+    color: var(--color-white);
+}
+
+.ore-nav__dropdown-item:is(button) {
+    width: 100%;
+    border: none;
+    font-size: 1em;
+}
+
+.ore-nav__dropdown-item:active {
+    background-color: var(--color-gray-light);
+}
+
+.ore-dark .ore-nav__dropdown-item:active {
+    background-color: var(--color-gray-dark);
+}
+
+.ore-nav__dropdown-divider {
+    height: 0pc;
+    border: none;
+    border-top: var(--border-lg) solid var(--color-gray-hover);
+    display: block;
+}
+
+.ore-dark .ore-nav__dropdown-divider {
+    border-top: var(--border-lg) solid var(--color-mid-bg);
+}
+
+
+
+/* Estilos base para el toggle */
+.ore-header__toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    padding: 10px;
+    cursor: pointer;
+    color: var(--color-text-dark);
+}
+
+/* Diseño responsive */
+@media (max-width: 768px) {
+    .ore-header {
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .ore-header__nav {
+        width: 100%;
+        display: none;
+        flex-direction: column;
+        align-items: flex-start;
+        transition: all 0.3s ease;
+    }
+
+    .ore-header__nav.show {
+        display: flex;
+    }
+
+    .ore-header__nav-list {
+        flex-direction: column;
+        padding: 0px;
+        width: 100%;
+        gap: 0;
+    }
+
+    .ore-nav__link {
+        display: inline-block;
+        width: 100%;
+        padding: 15px 20px;
+        text-align: left;
+        border-top: 1px solid var(--color-gray-hover);
+    }
+
+    .ore-header__toggle {
+        display: block;
+    }
+
+    .ore-nav__dropdown-menu {
+        position: static !important;
+        box-shadow: none;
+        border: none;
+        padding-left: 20px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media (min-width: 440px) {
+    .main-buttons {
+        display: flex;
+        justify-content: flex-end;
+        align-items: flex-start;
+    }
+}
+
+@media (max-width: 439px) {
+    .main-buttons {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+}
+
+
+.ore-button {
+    display: inline-block;
+    padding: var(--padding-lg);
+    /* Ajusta el espacio para el borde exterior */
+    background-color: var(--color-dark-bg);
+    box-sizing: border-box;
+    cursor: pointer;
+    user-select: none;
+}
+
+.ore-button button span {
+    font-family: "Minecraft", sans-serif;
+    font-size: var(--font-size-md);
+}
+
+/* Ore Button Primary */
+
+.ore-button__primary button {
+    background-color: var(--color-green);
+    color: white;
+    border-top: var(--border-lg) solid var(--color-green-light);
+    border-left: var(--border-lg) solid var(--color-green-light);
+    border-right: var(--border-lg) solid #4F913C;
+    border-bottom: var(--border-lg) solid #4F913C;
+    padding: var(--button-padding-sm);
+    border-radius: var(--radius-none);
+    cursor: pointer;
+    width: 100%;
+}
+
+.ore-button__primary:active button {
+    background-color: var(--color-green-hover);
+    border-top: var(--border-lg) solid var(--color-green-lighter);
+    border-left: var(--border-lg) solid var(--color-green-lighter);
+    border-right: var(--border-lg) solid #608259;
+    border-bottom: var(--border-lg) solid #608259;
+}
+
+.ore-button__primary:hover button {
+    background-color: var(--color-green-hover);
+    border-top: var(--border-lg) solid var(--color-green-lighter);
+    border-left: var(--border-lg) solid var(--color-green-lighter);
+    border-right: var(--border-lg) solid #608259;
+    border-bottom: var(--border-lg) solid #608259;
+}
+
+.ore-button__primary .ore-button__decoration {
+    background-color: var(--color-green-hover);
+    border-radius: var(--radius-none);
+    padding: var(--padding-lg);
+    /* Ajusta el espacio para el borde exterior */
+}
+
+.ore-button__primary:active .ore-button__decoration {
+    display: none;
+}
+
+.ore-button__primary:active {
+    transform: translateY(0.50pc);
+}
+
+/* Ore Button Secondary */
+
+.ore-button__secondary button {
+    background-color: var(--color-gray-light);
+    color: var(--color-text-dark);
+    border-top: var(--border-lg) solid var(--color-border-light);
+    border-left: var(--border-lg) solid var(--color-border-light);
+    border-right: var(--border-lg) solid var(--color-border-light);
+    border-bottom: var(--border-lg) solid var(--color-border-light);
+    padding: var(--button-padding-sm);
+    border-radius: var(--radius-none);
+    cursor: pointer;
+    width: 100%;
+}
+
+.ore-button__secondary button span {
+    color: var(--color-text-dark);
+}
+
+.ore-button__secondary:active button {
+    background-color: var(--color-gray-hover);
+    border-top: var(--border-lg) solid var(--color-border-light);
+    border-left: var(--border-lg) solid var(--color-border-light);
+    border-right: var(--border-lg) solid var(--color-border-light);
+    border-bottom: var(--border-lg) solid var(--color-border-light);
+}
+
+.ore-button__secondary:hover button {
+    background-color: var(--color-gray-hover);
+    border-top: var(--border-lg) solid var(--color-border-light);
+    border-left: var(--border-lg) solid var(--color-border-light);
+    border-right: var(--border-lg) solid var(--color-border-light);
+    border-bottom: var(--border-lg) solid var(--color-border-light);
+}
+
+.ore-button__secondary .ore-button__decoration {
+    background-color: #58585A;
+    border-radius: var(--radius-none);
+    padding: var(--padding-lg);
+    /* Ajusta el espacio para el borde exterior */
+}
+
+.ore-button__secondary:active .ore-button__decoration {
+    display: none;
+}
+
+.ore-button__secondary:active {
+    transform: translateY(0.50pc);
+}
+
+/* Ore Button Danger */
+
+.ore-button__danger button {
+    background-color: var(--color-red);
+    color: white;
+    border-top: var(--border-lg) solid var(--color-red-light);
+    border-left: var(--border-lg) solid var(--color-red-light);
+    border-right: var(--border-lg) solid #CF4A4A;
+    border-bottom: var(--border-lg) solid #CF4A4A;
+    padding: var(--button-padding-sm);
+    border-radius: var(--radius-none);
+    cursor: pointer;
+    width: 100%;
+}
+
+.ore-button__danger:active button {
+    background-color: var(--color-red-dark);
+    border-top: var(--border-lg) solid var(--color-red-lighter);
+    border-left: var(--border-lg) solid var(--color-red-lighter);
+    border-right: var(--border-lg) solid #CE7777;
+    border-bottom: var(--border-lg) solid #CE7777;
+}
+
+.ore-button__danger:hover button {
+    background-color: var(--color-red-dark);
+    border-top: var(--border-lg) solid var(--color-red-lighter);
+    border-left: var(--border-lg) solid var(--color-red-lighter);
+    border-right: var(--border-lg) solid #CE7777;
+    border-bottom: var(--border-lg) solid #CE7777;
+}
+
+.ore-button__danger .ore-button__decoration {
+    background-color: var(--color-red-dark);
+    border-radius: var(--radius-none);
+    padding: var(--padding-lg);
+    /* Ajusta el espacio para el borde exterior */
+}
+
+.ore-button__danger:active .ore-button__decoration {
+    display: none;
+}
+
+.ore-button__danger:active {
+    transform: translateY(0.50pc);
+}
+
+/* Ore Button Info */
+
+.ore-button__info button {
+    background-color: var(--color-purple);
+    color: white;
+    border-top: var(--border-lg) solid var(--color-purple-light);
+    border-left: var(--border-lg) solid var(--color-purple-light);
+    border-right: var(--border-lg) solid #8E49EB;
+    border-bottom: var(--border-lg) solid #8E49EB;
+    padding: var(--button-padding-sm);
+    border-radius: var(--radius-none);
+    cursor: pointer;
+    width: 100%;
+}
+
+.ore-button__info:active button {
+    background-color: var(--color-purple-dark);
+    border-top: var(--border-lg) solid var(--color-purple-lighter);
+    border-left: var(--border-lg) solid var(--color-purple-lighter);
+    border-right: var(--border-lg) solid #8B3CD8;
+    border-bottom: var(--border-lg) solid #8B3CD8;
+}
+
+.ore-button__info:hover button {
+    background-color: var(--color-purple-dark);
+    border-top: var(--border-lg) solid var(--color-purple-lighter);
+    border-left: var(--border-lg) solid var(--color-purple-lighter);
+    border-right: var(--border-lg) solid #8B3CD8;
+    border-bottom: var(--border-lg) solid #8B3CD8;
+}
+
+.ore-button__info .ore-button__decoration {
+    background-color: var(--color-purple-dark);
+    border-radius: var(--radius-none);
+    padding: var(--padding-lg);
+    /* Ajusta el espacio para el borde exterior */
+}
+
+.ore-button__info:active .ore-button__decoration {
+    display: none;
+}
+
+.ore-button__info:active {
+    transform: translateY(0.50pc);
+}
+
+
+/* Ore Button Warning */
+
+.ore-button__warning button {
+    background-color: var(--color-yellow);
+    border-top: var(--border-lg) solid var(--color-yellow-light);
+    border-left: var(--border-lg) solid var(--color-yellow-light);
+    border-right: var(--border-lg) solid #D4AB2F;
+    border-bottom: var(--border-lg) solid #D4AB2F;
+    padding: var(--button-padding-sm);
+    border-radius: var(--radius-none);
+    cursor: pointer;
+    width: 100%;
+}
+
+.ore-button__warning button span {
+    color: var(--color-text-dark);
+}
+
+.ore-button__warning:active button {
+    background-color: var(--color-yellow-hover);
+    border-top: var(--border-lg) solid var(--color-yellow-lighter);
+    border-left: var(--border-lg) solid var(--color-yellow-lighter);
+    border-right: var(--border-lg) solid #d4bb6f;
+    border-bottom: var(--border-lg) solid #d4bb6f;
+}
+
+.ore-button__warning:hover button {
+    background-color: var(--color-yellow-hover);
+    border-top: var(--border-lg) solid var(--color-yellow-lighter);
+    border-left: var(--border-lg) solid var(--color-yellow-lighter);
+    border-right: var(--border-lg) solid #d4bb6f;
+    border-bottom: var(--border-lg) solid #d4bb6f;
+}
+
+.ore-button__warning .ore-button__decoration {
+    background-color: var(--color-yellow-hover);
+    border-radius: var(--radius-none);
+    padding: var(--padding-lg);
+    /* Ajusta el espacio para el borde exterior */
+}
+
+.ore-button__warning:active .ore-button__decoration {
+    display: none;
+}
+
+.ore-button__warning:active {
+    transform: translateY(0.50pc);
+}
+
+
+.pe-button {
+    display: inline-block;
+    padding: var(--padding-sm);
+    /* Ajusta el espacio para el borde exterior */
+    box-sizing: border-box;
+    background-color: #131313;
+    cursor: pointer;
+}
+
+.pe-button__full-width {
+    display: block;
+    height: 100%;
+}
+
+.pe-button button span {
+    font-family: "Minecraft", sans-serif;
+    font-size: var(--font-size-lg);
+}
+
+
+
+/* Ore Button Basic */
+
+.ore-button__basic {
+    background-color: var(--color-text-dark);
+    padding: 0.2pc;
+}
+
+.ore-button__basic button {
+    background-color: #58585A;
+    color: var(--color-white);
+    border-top: #68686A solid 0.2pc;
+    border-left: #68686A solid 0.2pc;
+    border-bottom: #3E3E3F solid 0.2pc;
+    border-right: #3E3E3F solid 0.2pc;
+    padding: 20px 20px;
+    border-radius: var(--radius-none);
+    font-family: "Minecraft", sans-serif;
+    font-size: var(--font-size-md);
+    cursor: pointer;
+    width: 100%;
+}
+
+.ore-button__basic button span {
+    font-family: "Minecraft", sans-serif;
+    font-size: var(--font-size-md);
+}
+
+.ore-button__basic:is(button) {
+    background-color: #58585A;
+    color: var(--color-white);
+    border-top: #68686A solid 0.2pc;
+    border-left: #68686A solid 0.2pc;
+    border-bottom: #3E3E3F solid 0.2pc;
+    border-right: #3E3E3F solid 0.2pc;
+    padding: 20px 20px;
+    border-radius: var(--radius-none);
+    font-family: "Minecraft", sans-serif;
+    font-size: var(--font-size-md);
+    cursor: pointer;
+}
+
+.ore-button__basic:hover button {
+    background-color: #48494A;
+    border-top: #5A5B5C solid 0.2pc;
+    border-left: #5A5B5C solid 0.2pc;
+    border-bottom: #333334 solid 0.2pc;
+    border-right: #333334 solid 0.2pc;
+}
+
+.ore-button__basic:active button {
+    background-color: #313233;
+    border-top: #454647 solid 0.2pc;
+    border-left: #454647 solid 0.2pc;
+    border-bottom: #222324 solid 0.2pc;
+    border-right: #222324 solid 0.2pc;
+}
+
+
+/* PE Button Primary */
+
+.pe-button__primary button {
+    height: 100%;
+    width: 100%;
+    background-color: var(--color-pe-base);
+    border-top: var(--border-md) solid var(--color-pe-border-light);
+    border-left: var(--border-md) solid var(--color-pe-border-light);
+    border-right: var(--border-md) solid var(--color-pe-border-dark);
+    border-bottom: var(--border-md) solid var(--color-pe-border-dark);
+    padding: var(--button-padding);
+    border-radius: var(--radius-none);
+    cursor: pointer;
+}
+
+.pe-button__primary button span {
+    color: #4C4C4C;
+}
+
+.pe-button__primary:active button {
+    background-color: #218306;
+    color: white;
+    border-top: var(--border-md) solid #17CD07;
+    border-left: var(--border-md) solid #17CD07;
+    border-right: var(--border-md) solid #004E00;
+    border-bottom: var(--border-md) solid #004E00;
+}
+
+.pe-button__primary:hover button {
+    background-color: #218306;
+    color: white;
+    border-top: var(--border-md) solid #17CD07;
+    border-left: var(--border-md) solid #17CD07;
+    border-right: var(--border-md) solid #004E00;
+    border-bottom: var(--border-md) solid #004E00;
+}
+
+.pe-button__primary:active button span {
+    color: white;
+}
+
+.pe-button__primary:hover button span {
+    color: white;
+}
+
+.pe-button__primary .pe-button__decoration {
+    background-color: var(--color-green-hover);
+    border-radius: var(--radius-none);
+    padding: var(--padding-lg);
+    /* Ajusta el espacio para el borde exterior */
+}
+
+.pe-button__primary:active {
+    background-color: white;
+}
+
+.pe-button__primary:hover {
+    background-color: white;
+}
+
+/* Ore Input Text */
+
+.ore-input[type="text"],
+.ore-input[type="password"],
+.ore-input[type="email"] {
+    background-color: #313233;
+    border: var(--border-lg) solid var(--color-text-dark);
+    border-top: var(--border-xl) solid var(--color-text-dark);
+    padding: var(--button-padding-sm);
+    border-radius: var(--radius-none);
+    font-family: "Mc-Ten", sans-serif;
+    font-size: var(--font-size-md);
+    color: white;
+    caret-color: var(--color-green-focus);
+}
+
+.ore-input[type="text"]::selection,
+.ore-input[type="password"]::selection,
+.ore-input[type="email"]::selection {
+    background-color: var(--color-green);
+    color: white;
+}
+
+.ore-input[type="text"]::placeholder,
+.ore-input[type="password"]::placeholder,
+.ore-input[type="email"]::placeholder {
+    color: var(--color-placeholder);
+}
+
+.ore-input[type="text"]:focus,
+.ore-input[type="password"]:focus,
+.ore-input[type="email"]:focus {
+    outline: none;
+    border: var(--border-lg) solid var(--color-text-dark);
+    border-top: var(--border-xl) solid var(--color-text-dark);
+    box-shadow: 0px 8px 15px var(--color-shadow);
+    -webkit-box-shadow: 0 0 0px 1000px #313233 inset;
+}
+
+.ore-input[type="text"]:-webkit-autofill,
+.ore-input[type="text"]:-webkit-autofill:hover,
+.ore-input[type="text"]:-webkit-autofill:focus {
+    -webkit-text-fill-color: white;
+    -webkit-box-shadow: 0 0 0px 1000px #313233 inset;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+.ore-input[type="password"]:-webkit-autofill,
+.ore-input[type="password"]:-webkit-autofill:hover,
+.ore-input[type="password"]:-webkit-autofill:focus {
+    -webkit-text-fill-color: white;
+    -webkit-box-shadow: 0 0 0px 1000px #313233 inset;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+.ore-input[type="email"]:-webkit-autofill,
+.ore-input[type="email"]:-webkit-autofill:hover,
+.ore-input[type="email"]:-webkit-autofill:focus {
+    -webkit-text-fill-color: white;
+    -webkit-box-shadow: 0 0 0px 1000px #313233 inset;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+
+/* Ore Label */
+
+.ore-label {
+    font-family: "Mc-Ten", sans-serif;
+    font-size: var(--font-size-md);
+    color: white;
+}
+
+
+/* Ore Switch */
+
+.ore-switch {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 1rem;
+    /* base for relative sizing */
+    margin-inline: 0.31pc;
+    height: 3em;
+    /* ~44px */
+}
+
+.ore-input[type="checkbox"] {
+    display: none;
+}
+
+.ore-slider {
+    position: relative;
+    width: 4.5em;
+    /* ~100px if 1em = 16px */
+    height: 2em;
+    /* ~44px */
+    background-image: url("assets/images/ore-switch-background.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: 0.15em solid var(--color-text-dark);
+    transition: background 0.3s;
+    image-rendering: pixelated;
+    /* Mantiene los píxeles nítidos */
+    image-rendering: crisp-edges;
+    /* Alternativa para navegadores */
+}
+
+
+
+.ore-slider__text {
+    background-color: transparent !important;
+    margin-left: 15px;
+    font-family: "Mc-Ten", sans-serif;
+    font-size: var(--font-size-md);
+    color: white;
+}
+
+.ore-switch__decoration {
+    position: absolute;
+    top: -0.61em;
+    left: -0.14em;
+    width: 2.5em;
+    /* ~40px */
+    height: 2.75em;
+    border: 0.15em solid var(--color-text-dark);
+    background-color: var(--color-gray-light);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+    transition: all 0.4s cubic-bezier(0.1, 0.885, 0.32, 1.275);
+}
+
+.ore-switch input:checked+.ore-slider .ore-switch__decoration {
+    left: calc(100% - 2.35em);
+    /* 100% - width - spacing */
+}
+
+.ore-switch__decoration-body {
+    flex: 1;
+    background-color: var(--color-gray-light);
+    border: 0.15em solid #E3E3E5;
+}
+
+.ore-switch__decoration-bottom {
+    height: 0.5em;
+    background-color: #A9A9A9;
+}
+
+.ore-switch:hover .ore-slider .ore-switch__decoration-body {
+    background-color: var(--color-gray-hover);
+}
+
+.ore-card__body-modal .ore-switch__decoration {
+    position: absolute;
+    top: -0.31em;
+    left: -0.14em;
+    width: 2.6em;
+    /* ~40px */
+    height: 2.75em;
+    border: 0.15em solid var(--color-text-dark);
+    background-color: var(--color-gray-light);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+    transition: all 0.4s cubic-bezier(0.1, 0.885, 0.32, 1.275);
+}
+
+.ore-card__body-modal .ore-switch input:checked+.ore-slider .ore-switch__decoration {
+    left: calc(100% - 2.45em);
+    /* 100% - width - spacing */
+}
+
+
+/* Ore Input Textarea */
+
+.ore-input-textarea {
+    background-color: #313233;
+    border: var(--border-lg) solid var(--color-text-dark);
+    border-top: var(--border-xl) solid var(--color-text-dark);
+    padding: var(--input-padding);
+    border-radius: var(--radius-none);
+    font-family: "Mc-Ten", sans-serif;
+    font-size: var(--font-size-md);
+    color: white;
+    caret-color: var(--color-green-focus);
+}
+
+.ore-input-textarea::selection {
+    background-color: var(--color-green);
+    color: white;
+}
+
+.ore-input-textarea:focus {
+    outline: none;
+    border: var(--border-lg) solid var(--color-text-dark);
+    border-top: var(--border-xl) solid var(--color-text-dark);
+    box-shadow: 0px 8px 15px var(--color-shadow);
+    -webkit-box-shadow: 0 0 0px 1000px #313233 inset;
+}
+
+.ore-input-textarea:-webkit-autofill,
+.ore-input-textarea:-webkit-autofill:hover,
+.ore-input-textarea:-webkit-autofill:focus {
+    -webkit-text-fill-color: white;
+    -webkit-box-shadow: 0 0 0px 1000px #313233 inset;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+
+.ore-input-textarea::-webkit-scrollbar {
+    width: var(--scrollbar-width);
+}
+
+.ore-input-textarea::-webkit-scrollbar-track {
+    background-color: #58585A;
+    width: 7px;
+    border: #313233 solid var(--border-lg);
+}
+
+.ore-input-textarea::-webkit-scrollbar-thumb:hover {
+    background-color: var(--color-light-bg);
+    border: var(--scroll-thumb-border) solid var(--border-lg);
+    cursor: default;
+}
+
+.ore-input-textarea::-webkit-scrollbar-thumb {
+    background-color: var(--color-light-bg);
+    border: var(--scroll-thumb-border) solid var(--border-lg);
+    cursor: default;
+}
+
+/* Ore Input Range */
+
+.ore-input-range {
+    width: 100%;
+    margin-block: 1.2pc;
+}
+
+.ore-input-range input[type="range"] {
+    -webkit-appearance: none;
+    background-color: var(--color-green);
+    border-radius: var(--radius-none);
+    height: 0.8pc;
+    width: calc(100% - 0.3pc);
+    display: flex;
+    align-items: center;
+
+    border-top: var(--border-md) solid var(--color-green-light);
+    border-left: none;
+    border-right: none;
+    border-bottom: var(--border-md) solid #4F913C;
+}
+
+.ore-input-range input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 50px;
+    height: 50px;
+    background-image: url("assets/images/ore-range.png");
+    image-rendering: pixelated;
+    /* Mantiene los píxeles nítidos */
+    image-rendering: crisp-edges;
+    /* Alternativa para navegadores */
+    background-size: cover;
+    /* Hace que la imagen cubra todo el espacio */
+    background-repeat: no-repeat;
+    /* Evita que la imagen se duplique */
+    cursor: pointer;
+}
+
+.ore-input-range input[type="range"]::-webkit-slider-thumb:hover {
+    width: 55px;
+    height: 55px;
+    background-image: url("assets/images/ore-range-hover.png");
+    border: var(--border-md) solid white;
+}
+
+.ore-input-range input[type="range"]::-moz-range-track:hover {
+    width: 55px;
+    height: 55px;
+    background-image: url("assets/images/ore-range-hover.png");
+    border: var(--border-md) solid white;
+}
+
+.ore-input-range___decoration {
+    width: 100%;
+    background-color: var(--color-black);
+    padding: var(--padding-sm);
+}
+
+.ore-input-range input[type="range"]::-moz-range-track {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 50px;
+    height: 50px;
+    background-image: url("assets/images/ore-range.png");
+    image-rendering: pixelated;
+    /* Mantiene los píxeles nítidos */
+    image-rendering: crisp-edges;
+    /* Alternativa para navegadores */
+    background-size: cover;
+    /* Hace que la imagen cubra todo el espacio */
+    background-repeat: no-repeat;
+    /* Evita que la imagen se duplique */
+    cursor: pointer;
+}
+
+
+/* Pe Input */
+
+.pe-input {
+    display: flex;
+    background-color: var(--color-black);
+    padding: var(--padding-sm);
+    font-family: "Minecraft", sans-serif;
+    font-size: var(--font-size-md);
+}
+
+.pe-input:hover {
+    background-color: white;
+    padding: var(--padding-sm);
+}
+
+/* PE Input Text */
+
+.pe-input:has(input[type="text"], input[type="password"], input[type="email"]) {
+    max-height: 69px;
+    min-width: 351px;
+}
+
+.pe-input input[type="text"],
+.pe-input input[type="password"],
+.pe-input input[type="email"] {
+    background-color: var(--color-gray-dark);
+    border-top: var(--border-md) solid #464446;
+    border-bottom: var(--border-md) solid #B2B2B2;
+    border-left: none;
+    border-right: none;
+    padding: 20px 20px;
+    border-radius: var(--radius-none);
+    font-family: "Minecraft", sans-serif;
+    font-size: var(--font-size-md);
+    color: white;
+    caret-color: var(--color-green-focus);
+    width: 100%;
+}
+
+.pe-input input[type="text"]::placeholder,
+input[type="password"]::placeholder,
+input[type="email"]::placeholder {
+    color: #D9D9D9;
+}
+
+.pe-input input[type="text"]::selection,
+input[type="password"]::selection,
+input[type="email"]::selection {
+    background-color: var(--color-green);
+    color: white;
+}
+
+.pe-input input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="email"]:focus {
+    outline: none;
+    -webkit-box-shadow: 0 0 0px 1000px var(--color-gray-dark) inset;
+}
+
+.pe-input input[type="text"]:-webkit-autofill,
+.pe-input input[type="text"]:-webkit-autofill:hover,
+.pe-input input[type="text"]:-webkit-autofill:focus {
+    -webkit-text-fill-color: white;
+    -webkit-box-shadow: 0 0 0px 1000px var(--color-gray-dark) inset;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+.pe-input input[type="password"]:-webkit-autofill,
+.pe-input input[type="password"]:-webkit-autofill:hover,
+.pe-input input[type="password"]:-webkit-autofill:focus {
+    -webkit-text-fill-color: white;
+    -webkit-box-shadow: 0 0 0px 1000px var(--color-gray-dark) inset;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+.pe-input input[type="email"]:-webkit-autofill,
+.pe-input input[type="email"]:-webkit-autofill:hover,
+.pe-input input[type="email"]:-webkit-autofill:focus {
+    -webkit-text-fill-color: white;
+    -webkit-box-shadow: 0 0 0px 1000px var(--color-gray-dark) inset;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+/* PE Label */
+
+.pe-label {
+    font-family: "Minecraft", sans-serif;
+    font-size: var(--font-size-md);
+    color: white;
+}
+
+
+/* PE Switch */
+
+.pe-switch {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 1rem;
+    /* base for relative sizing */
+    margin-inline: 0.31pc;
+}
+
+.pe-input[type="checkbox"] {
+    display: none;
+}
+
+.pe-slider {
+    position: relative;
+    width: 3.25em;
+    /* ~100px if 1em = 16px */
+    height: 1.75em;
+    /* ~44px */
+    background-image: url("assets/images/pe-switch-background-off.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: 0.2em solid var(--color-text-dark);
+    image-rendering: pixelated;
+    /* Mantiene los píxeles nítidos */
+    image-rendering: crisp-edges;
+    /* Alternativa para navegadores */
+}
+
+.pe-slider__text {
+    background-color: transparent !important;
+    margin-left: 15px;
+    font-size: larger;
+}
+
+.pe-switch__decoration {
+    position: absolute;
+    top: -0.5em;
+    left: -0.5em;
+    width: 1.75em;
+    /* ~40px */
+    height: 2.75em;
+    border: 0.2em solid var(--color-text-dark);
+    background-color: var(--color-gray-light);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+
+.pe-switch input:checked+.pe-slider {
+    background-image: url("assets/images/pe-switch-background-on.png");
+}
+
+.pe-switch input:checked+.pe-slider .pe-switch__decoration {
+    left: calc(100% - 1.2em);
+    /* 100% - width - spacing */
+}
+
+.pe-switch__decoration-body {
+    flex: 1;
+    background-color: var(--color-pe-base)17;
+    border-top: 0.2em solid white;
+    border-left: 0.2em solid white;
+    border-right: 0.2em solid #585658;
+    border-bottom: 0.2em solid #585658;
+}
+
+.pe-switch:hover .pe-slider .pe-switch__decoration-body {
+    background-color: var(--color-pe-accent);
+
+    border-top: 0.2em solid #37D61E;
+    border-left: 0.2em solid #37D61E;
+    border-right: 0.2em solid #037300;
+    border-bottom: 0.2em solid #037300;
+}
+
+.pe-switch:hover .pe-slider .pe-switch__decoration {
+    border: 0.2em solid white;
+}
+
+.pe-switch:hover .pe-slider {
+    border: 0.2em solid white;
+    background-image: url("assets/images/pe-switch-background-off-hover.png");
+}
+
+.pe-switch:hover input:checked+.pe-slider {
+    border: 0.2em solid white;
+    background-image: url("assets/images/pe-switch-background-on-hover.png");
+}
+
+
+/* PE Input Textarea */
+
+.pe-input:has(.pe-input-textarea) {
+    height: 100%;
+}
+
+.pe-input-textarea {
+    background-color: var(--color-gray-dark);
+    border-top: var(--border-md) solid #464446;
+    border-bottom: var(--border-md) solid #B2B2B2;
+    border-left: none;
+    border-right: none;
+    padding: 20px 20px;
+    border-radius: var(--radius-none);
+    font-family: "Minecraft", sans-serif;
+    font-size: var(--font-size-md);
+    color: white;
+    caret-color: var(--color-green-focus);
+    min-height: 22.5px;
+}
+
+.pe-input-textarea::placeholder {
+    color: #D9D9D9;
+}
+
+.pe-input-textarea::selection {
+    background-color: var(--color-green);
+    color: white;
+}
+
+.pe-input-textarea:focus {
+    outline: none;
+    box-shadow: 0px 8px 15px var(--color-shadow);
+    -webkit-box-shadow: 0 0 0px 1000px var(--color-gray-dark) inset;
+}
+
+.pe-input-textarea:-webkit-autofill,
+.pe-input-textarea:-webkit-autofill:hover,
+.pe-input-textarea:-webkit-autofill:focus {
+    -webkit-text-fill-color: white;
+    -webkit-box-shadow: 0 0 0px 1000px var(--color-gray-dark) inset;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+.pe-input-textarea::-webkit-scrollbar {
+    width: var(--scrollbar-width);
+}
+
+.pe-input-textarea::-webkit-scrollbar-track {
+    background-color: var(--scroll-track-bg);
+    width: 7px;
+    border: var(--color-gray-dark) solid var(--border-lg);
+}
+
+.pe-input-textarea::-webkit-scrollbar-thumb:hover {
+    background-color: var(--color-light-bg);
+    border: var(--scroll-thumb-border) solid var(--border-lg);
+    cursor: default;
+}
+
+.pe-input-textarea::-webkit-scrollbar-thumb {
+    background-color: var(--color-light-bg);
+    border: var(--scroll-thumb-border) solid var(--border-lg);
+    cursor: default;
+}
+
+/* PE Input Range */
+
+.pe-input-range {
+    width: 100%;
+}
+
+.pe-input-range input[type="range"] {
+    -webkit-appearance: none;
+    background-color: #404040;
+    border-radius: var(--radius-none);
+    height: 1.75em;
+    --track-color: red;
+    width: calc(100% - 0.3pc);
+    display: flex;
+    align-items: center;
+    border: var(--border-md) solid var(--color-black);
+    margin-block: 1.2pc;
+}
+
+.pe-input-range input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 30px;
+    height: 49px;
+    background-image: url("assets/images/pe-range.png");
+    image-rendering: pixelated;
+    /* Mantiene los píxeles nítidos */
+    image-rendering: crisp-edges;
+    /* Alternativa para navegadores */
+    background-size: cover;
+    /* Hace que la imagen cubra todo el espacio */
+    background-repeat: no-repeat;
+    /* Evita que la imagen se duplique */
+    cursor: pointer;
+}
+
+.pe-input-range input[type="range"]:hover {
+    background-color: #4E8836;
+    border: var(--border-md) solid white;
+}
+
+.pe-input-range input[type="range"]:hover::-webkit-slider-thumb {
+    background-image: url("assets/images/pe-range-hover.png");
+}
+
+.pe-input-range input[type="range"]::-moz-range-track {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 30px;
+    height: 50px;
+    background-image: url("assets/images/pe-range.png");
+    image-rendering: pixelated;
+    /* Mantiene los píxeles nítidos */
+    image-rendering: crisp-edges;
+    /* Alternativa para navegadores */
+    background-size: cover;
+    /* Hace que la imagen cubra todo el espacio */
+    background-repeat: no-repeat;
+    /* Evita que la imagen se duplique */
+    cursor: pointer;
+}
+
+.pe-input-range input[type="range"]:hover::-moz-range-track {
+    background-image: url("assets/images/pe-range-hover.png");
+}
+
+
+/* Ore Select */
+.ore-button:has(.ore-select__full-width) {
+    width: 100%;
+}
+
+.ore-button:has(.ore-select__full-width):hover {
+    width: 100%;
+}
+
+.ore-select {
+    margin-block: 10px;
+    padding: 0.2pc;
+}
+
+.ore-select select {
+    background-color: #58585A;
+    color: var(--color-white);
+    border-top: #68686A solid 0.2pc;
+    border-left: #68686A solid 0.2pc;
+    border-bottom: #3E3E3F solid 0.2pc;
+    border-right: #3E3E3F solid 0.2pc;
+    text-align: left;
+    height: 100%;
+    width: 100%;
+    padding: var(--button-padding);
+    border-radius: var(--radius-none);
+    font-family: "Mc-Ten", sans-serif;
+    font-size: x-large;
+    cursor: pointer;
+}
+
+.ore-select select,
+::picker(select) {
+    appearance: base-select;
+}
+
+.ore-select select::picker-icon {
+    content: url('assets/images/ore-arrow-select.png');
+    /* Imagen personalizada */
+    width: 37px;
+    /* Ajusta según tu diseño */
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ore-select select:open::picker-icon {
+    rotate: 180deg;
+}
+
+.ore-select:hover select {
+    background-color: #48494A;
+    border-top: #5A5B5C solid 0.2pc;
+    border-left: #5A5B5C solid 0.2pc;
+    border-bottom: #333334 solid 0.2pc;
+    border-right: #333334 solid 0.2pc;
+}
+
+.ore-select:active select {
+    background-color: #313233;
+    border-top: #454647 solid 0.2pc;
+    border-left: #454647 solid 0.2pc;
+    border-bottom: #222324 solid 0.2pc;
+    border-right: #222324 solid 0.2pc;
+}
+
+.ore-select select option {
+    background-color: #58585A;
+    color: white;
+    padding: var(--button-padding-sm);
+    font-family: "Mc-Ten", sans-serif;
+}
+
+.ore-select select option:first-of-type {
+    border-top: #68686A solid var(--border-md);
+    border-left: #68686A solid var(--border-md);
+}
+
+.ore-select select option:last-of-type {
+    border-bottom: #3E3E3F solid var(--border-md);
+    border-left: #68686A solid var(--border-md);
+}
+
+.ore-select select option:not(option:last-of-type) {
+    border-left: #68686A solid var(--border-md);
+}
+
+.ore-select select option:hover,
+option:focus {
+    background-color: #48494A;
+}
+
+.ore-select select::picker(select) {
+    border: var(--border-md) solid var(--color-black);
+    max-height: 300px;
+}
+
+.ore-select select::picker(select)::-webkit-scrollbar {
+    width: var(--scrollbar-width);
+    margin-right: 100pc;
+}
+
+.ore-select select::picker(select)::-webkit-scrollbar-track {
+    background-color: #58585A;
+    width: 7px;
+    border: var(--color-mid-bg) solid var(--border-lg);
+}
+
+.ore-select select::picker(select)::-webkit-scrollbar-thumb:hover {
+    background-color: var(--color-light-bg);
+    border: #313233 solid var(--border-lg);
+    cursor: default;
+}
+
+.ore-select select::picker(select)::-webkit-scrollbar-thumb {
+    background-color: var(--color-light-bg);
+    border: #313233 solid var(--border-lg);
+    cursor: default;
+}
+
+
+.ore-select select option::checkmark {
+    content: "";
+    height: 40px;
+    width: 40px;
+    background-image: url('assets/images/ore-checkmark-on.png');
+    /* Imagen personalizada */
+    image-rendering: pixelated;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.ore-button select option:not(:checked)::checkmark {
+    visibility: visible;
+    background-image: url('assets/images/ore-checkmark-off.png');
+}
+
+.ore-select select option:checked {
+    background-color: #313233;
+}
+
+.ore-select select option:checked:hover {
+    background-color: #48494A;
+}
+
+
+
+
+/* PE Select */
+.pe-button:has(.pe-select__full-width) {
+    width: 100%;
+}
+
+.pe-button:has(.pe-select__full-width):hover {
+    width: 100%;
+}
+
+.pe-select {
+    margin-block: 10px;
+}
+
+.pe-select select {
+    font-family: "Minecraft", sans-serif;
+    font-size: var(--font-size-lg);
+    text-align: left;
+    height: 100%;
+    width: 100%;
+    background-color: var(--color-pe-base);
+    color: #4C4C4C;
+    border-top: var(--border-md) solid var(--color-pe-border-light);
+    border-left: var(--border-md) solid var(--color-pe-border-light);
+    border-right: var(--border-md) solid var(--color-pe-border-dark);
+    border-bottom: var(--border-md) solid var(--color-pe-border-dark);
+    padding: var(--button-padding);
+    border-radius: var(--radius-none);
+    cursor: pointer;
+}
+
+.pe-select select,
+::picker(select) {
+    appearance: base-select;
+}
+
+.pe-select select::picker-icon {
+    content: url('assets/images/pe-arrow-select.png');
+    /* Imagen personalizada */
+    width: 37px;
+    /* Ajusta según tu diseño */
+    height: 25px;
+}
+
+.pe-select select:open::picker-icon {
+    rotate: 180deg;
+}
+
+.pe-select:hover {
+    background-color: white;
+}
+
+
+.pe-select:hover select {
+    background-color: #218306;
+    color: white;
+    border-top: var(--border-md) solid #17CD07;
+    border-left: var(--border-md) solid #17CD07;
+    border-right: var(--border-md) solid #004E00;
+    border-bottom: var(--border-md) solid #004E00;
+}
+
+.pe-select:focus select {
+    background-color: #218306;
+    color: white;
+    border-top: var(--border-md) solid #17CD07;
+    border-left: var(--border-md) solid #17CD07;
+    border-right: var(--border-md) solid #004E00;
+    border-bottom: var(--border-md) solid #004E00;
+}
+
+.pe-select select option {
+    background-color: #757575;
+    color: white;
+    padding: var(--button-padding-sm);
+    font-family: "Minecraft", sans-serif;
+}
+
+.pe-select select option:first-of-type {
+    border-top: #4E4C4E solid var(--border-md);
+    border-left: #4E4C4E solid var(--border-md);
+}
+
+.pe-select select option:last-of-type {
+    border-bottom: white solid var(--border-md);
+    border-left: #4E4C4E solid var(--border-md);
+}
+
+.pe-select select option:not(option:last-of-type) {
+    border-left: #4E4C4E solid var(--border-md);
+}
+
+.pe-select select option:hover,
+option:focus {
+    background-color: #177400;
+}
+
+.pe-select select::picker(select) {
+    border: var(--border-md) solid var(--color-black);
+    max-height: 300px;
+}
+
+.pe-select select::picker(select)::-webkit-scrollbar {
+    width: var(--scrollbar-width);
+    margin-right: 100pc;
+}
+
+.pe-select select::picker(select)::-webkit-scrollbar-track {
+    background-color: var(--scroll-track-bg);
+    width: 7px;
+    border: #757575 solid var(--border-md);
+}
+
+.pe-select select::picker(select)::-webkit-scrollbar-thumb:hover {
+    background-color: var(--color-pe-base);
+    border: #131311 solid var(--border-md);
+    cursor: default;
+}
+
+.pe-select select::picker(select)::-webkit-scrollbar-thumb {
+    background-color: var(--color-pe-base);
+    border: #131311 solid var(--border-md);
+    cursor: default;
+}
+
+
+
+.pe-select select option::checkmark {
+    content: "";
+    height: 40px;
+    width: 40px;
+    background-image: url('assets/images/pe-checkmark-on.png');
+    /* Imagen personalizada */
+}
+
+.pe-button select option:not(:checked)::checkmark {
+    visibility: visible;
+    background-image: url('assets/images/pe-checkmark-off.png');
+    /* Imagen personalizada */
+}
+
+.pe-select select option:checked {
+    background-color: #4A484A;
+}
+
+.pe-select select option:checked:hover {
+    background-color: #177400;
+}
+
+
+.pe-select select option:hover::checkmark {
+    background-image: url('assets/images/pe-checkmark-on-hover.png');
+    /* Imagen personalizada */
+}
+
+.pe-select select option:not(:checked):hover::checkmark {
+    background-image: url('assets/images/pe-checkmark-off-hover.png');
+    /* Imagen personalizada */
+}
+
+
+/** Ore Card **/
+
+.ore-card {
+    background-color: var(--color-mid-bg);
+    border: var(--border-md) solid var(--color-text-dark);
+    border-radius: var(--radius-none);
+    padding: 0px;
+    margin: 0px;
+    height: max-content;
+}
+
+.ore-card__image {
+    background-color: var(--color-dark-bg);
+}
+
+
+.ore-card__header {
+    padding-inline: 10px;
+    color: white;
+    border-bottom: var(--border-lg) solid #313233;
+}
+
+.ore-card__header h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Minecraft", sans-serif;
+}
+
+.ore-card__body {
+    padding-inline: 10px;
+    padding-block: 20px;
+    color: white;
+    border-bottom: var(--border-lg) solid #313233;
+}
+
+.ore-card__body p,
+.ore-card__body span,
+.ore-card__body label {
+    font-family: "Mc-Ten", sans-serif;
+    font-size: var(--font-size-md);
+}
+
+.ore-card__body p {
+    margin-block: 0.8pc;
+}
+
+.ore-card__body span {
+    background-color: var(--color-dark-bg);
+    padding: var(--padding-sm);
+}
+
+.ore-card__buttons {
+    display: grid;
+    width: 100%;
+}
+
+.ore-card__buttons button {
+    background-color: var(--color-mid-bg);
+    color: white;
+    border-top: var(--border-md) solid #5A5B5C;
+    border-bottom: var(--border-lg) solid #313233;
+    border-left: none;
+    border-right: none;
+    padding: 20px 20px;
+    border-radius: var(--radius-none);
+    font-family: "Minecraft", sans-serif;
+    font-size: var(--font-size-md);
+    cursor: pointer;
+}
+
+.ore-card__buttons button span {
+    background-color: transparent !important;
+    font-size: x-large;
+}
+
+.ore-card__buttons button:hover {
+    background-color: #58585A;
+}
+
+.ore-card__buttons button:active {
+    background-color: #58585A;
+    border-top: 0.45pc solid #5A5B5C;
+    border-bottom: none;
+}
+
+.ore-card__image-button {
+    display: grid;
+    width: 100%;
+}
+
+.ore-card__image-button img {
+    background-color: var(--color-dark-bg);
+    padding-bottom: var(--padding-sm);
+}
+
+.ore-card__image-button button {
+    background-color: var(--color-mid-bg);
+    color: white;
+    border-top: var(--border-md) solid #5A5B5C;
+    border-bottom: var(--border-lg) solid #313233;
+    border-left: none;
+    border-right: none;
+
+    padding: 24px 13px;
+
+    padding-bottom: 54px;
+
+    border-radius: var(--radius-none);
+    font-family: "Minecraft", sans-serif;
+    font-size: var(--font-size-md);
+    cursor: pointer;
+    text-align: left;
+}
+
+.ore-card__image-button button p {
+    margin-block: 10px;
+}
+
+.ore-card__image-button button span {
+    background-color: var(--color-dark-bg);
+    padding: var(--padding-sm);
+}
+
+.ore-card__image-button button p,
+.ore-card__image-button button span,
+.ore-card__image-button button label {
+    color: white;
+    font-family: "Minecraft", sans-serif;
+    font-size: 1.0em;
+}
+
+.ore-card__image-button:hover button {
+    background-color: #58585A;
+    cursor: pointer;
+}
+
+.ore-card__image-button:active button {
+    background-color: #58585A;
+    border-bottom: none;
+}
+
+.ore-card:has(.ore-card__image-button:active) {
+    transform: translateY(0.25pc);
+    margin-bottom: 0pc;
+}
+
+
+.ore-card__body-modal {
+    padding-inline: 10px;
+    padding-block: 20px;
+    color: white;
+    border-bottom: var(--border-lg) solid #313233;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.ore-card__body-modal .ore-input {
+    width: calc(100% - 48px);
+    margin-block: 10px;
+}
+
+.ore-card__body-modal p,
+.ore-card__body-modal span,
+.ore-card__body-modal label {
+    font-family: "Mc-Ten", sans-serif;
+    font-size: var(--font-size-md);
+}
+
+.ore-card__body-modal p {
+    margin-block: 0.8pc;
+}
+
+.ore-card__body-modal span {
+    background-color: var(--color-dark-bg);
+    padding: var(--padding-sm);
+}
+
+
+.ore-card__body-modal::-webkit-scrollbar {
+    width: var(--scrollbar-width);
+}
+
+.ore-card__body-modal::-webkit-scrollbar-track {
+    background-color: #58585A;
+    width: 7px;
+    border: var(--color-mid-bg) solid var(--border-lg);
+}
+
+.ore-card__body-modal::-webkit-scrollbar-thumb:hover {
+    background-color: var(--color-light-bg);
+    border: #313233 solid var(--border-lg);
+    cursor: default;
+}
+
+.ore-card__body-modal::-webkit-scrollbar-thumb {
+    background-color: var(--color-light-bg);
+    border: #313233 solid var(--border-lg);
+    cursor: default;
+}
+
+/** PE Card **/
+
+.pe-card {
+    border: var(--border-md) solid var(--color-black);
+    border-radius: var(--border-md);
+    padding: 0px;
+    margin: 0px;
+    height: max-content;
+}
+
+.pe-card__content {
+    background-color: var(--color-pe-base);
+    border-radius: var(--border-md);
+    border-top: var(--border-lg) solid var(--color-white);
+    border-left: var(--border-lg) solid var(--color-white);
+
+    border-bottom: var(--border-lg) solid #555555;
+    border-right: var(--border-lg) solid #555555;
+    padding: var(--padding-xl);
+}
+
+.pe-card__header {
+    text-align: center;
+    color: #4C4C4C;
+}
+
+.pe-card__header h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Minecraft", sans-serif;
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
+
+.pe-card__body {
+    background-color: var(--color-pe-dark);
+    border: solid var(--border-md) #393939;
+    padding-inline: 15px;
+    padding-block: 20px;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.pe-card__body p,
+.pe-card__body span,
+.pe-card__body label {
+    color: white;
+    font-family: "Minecraft", sans-serif;
+    margin-block: 0.8pc;
+}
+
+.pe-card__body::-webkit-scrollbar {
+    width: var(--scrollbar-width);
+    margin-right: 100pc;
+}
+
+.pe-card__body::-webkit-scrollbar-track {
+    background-color: var(--scroll-track-bg);
+    width: 7px;
+    border: var(--color-pe-dark) solid var(--border-md);
+}
+
+.pe-card__body::-webkit-scrollbar-thumb:hover {
+    background-color: var(--color-pe-base);
+    border: #131311 solid var(--border-md);
+    cursor: default;
+}
+
+.pe-card__body::-webkit-scrollbar-thumb {
+    background-color: var(--color-pe-base);
+    border: #131311 solid var(--border-md);
+    cursor: default;
+}
+
+
+.ore-modal__container {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0px;
+    left: 0px;
+    z-index: 9998;
+    background-color: #222222c4;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    inset: 0;
+}
+
+body.ore-modal-open {
+    overflow: hidden;
+}
+
+.ore-modal__container .ore-modal__card {
+    position: fixed;
+    z-index: 9999;
+    cursor: default;
+}
+
+.ore-modal__card-header {
+    user-select: none;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+
+.ore-modal__button-close {
+    background-color: var(--color-mid-bg);
+    color: var(--color-white);
+    border: none;
+    padding: 20px 20px;
+    border-radius: var(--radius-none);
+    font-family: "Minecraft", sans-serif;
+    font-size: var(--font-size-md);
+    cursor: pointer;
+}
+
+.ore-modal__button-close:hover {
+    background-color: var(--color-dark-bg-alt);
+}

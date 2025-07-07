@@ -1,0 +1,31 @@
+import {
+    baseBody,
+    baseButton,
+    baseButton1,
+    baseButton2,
+    baseSubmitButton,
+    baseDivider,
+    baseDropdown,
+    baseSlider,
+    baseTextField,
+    baseTitle,
+    baseToggle,
+    baseText,
+} from "../models/Form"; // o donde tengas definidos los baseX
+
+export const componentBaseMap = {
+    "": { type: "null" },
+    Body: baseBody,
+    Button: baseButton,
+    Button1: baseButton1,
+    Button2: baseButton2,
+    SubmitButton: baseSubmitButton,
+    Divider: baseDivider,
+    Dropdown: baseDropdown,
+    Label: baseText("label"),
+    Header: baseText("header"),
+    Slider: baseSlider,
+    TextField: baseTextField,
+    Title: baseTitle,
+    Toggle: baseToggle,
+} as const;
