@@ -73,7 +73,6 @@ const App = (): JSX.Element => {
 			return
 		}
 
-
 		const entries: EntryTypesForms[] = []
 
 		if (initialViewType === "ActionForm") {
@@ -90,7 +89,7 @@ const App = (): JSX.Element => {
 		await ProjectDB.addProject({
 			id: crypto.randomUUID(),
 			name,
-			src: `card-image-${Math.floor(Math.random() * 2)}.jpg`, 
+			src: `card-image-${Math.floor(Math.random() * 2)}.jpg`,
 			data: { entries }
 		})
 
@@ -126,9 +125,15 @@ const App = (): JSX.Element => {
 	const handleImportProject = async (): Promise<void> => {
 		if (!importData) return
 		if (importOption == "add") {
-			await ProjectDB.addProject({ ...importData, id: crypto.randomUUID() })
+			if (showOptions) {
+				await ProjectDB.addProject({ ...importData, id: crypto.randomUUID() })
+			} else {
+				await ProjectDB.addProject({ ...importData })
+			}
+			setImportData(undefined);
 		} else {
 			await ProjectDB.updateProject(importData)
+			setImportData(undefined);
 		}
 		await fetchProjects()
 	}
@@ -155,7 +160,12 @@ const App = (): JSX.Element => {
 							Preferences
 						</a>
 					</li>
+
 				</OreDropdown>
+
+				<div>
+					<li className="ore-nav__item"><a className="ore-nav__link" href="/docs">Docs</a></li>
+				</div>
 			</OreHeader>
 			<div className="main-buttons">
 				<div
@@ -255,8 +265,11 @@ const App = (): JSX.Element => {
 				</div>
 			</OreModal>
 
-			<OreModal title="Edit Project" titleStyle="ore-label" isOpen={isImportModalOpen} setIsOpen={setImportModalOpen} submitButtonText='Save' width="500px" onSubmit={handleImportProject}>
-				<label className="ore-label">Select File</label>
+			<OreModal title="Import Project" titleStyle="ore-label" isOpen={isImportModalOpen} setIsOpen={setImportModalOpen} submitButtonText='Import' width="500px" onClose={() => {
+				setImportData(undefined)
+				setShowOptions(false)
+			}} onSubmit={handleImportProject}>
+				<label className="ore-label">{importData != undefined ? `Selected File : ${importData.name}` : "Select File "}</label>
 				<br />
 				<div className="ore-button ore-button__basic" style={{
 					width: "100%",
@@ -265,7 +278,7 @@ const App = (): JSX.Element => {
 					fileRef.current?.click()
 				}}>
 					<button style={{ width: "100%", padding: "10px" }}>
-						<label>Select File</label>
+						<label>{importData != undefined ? `Selected File : ${importData.name}` : "Select File "}</label>
 					</button>
 					<input ref={fileRef} type="file" id="project-files" accept=".uc" className="input-file" style={{
 						cursor: "pointer",

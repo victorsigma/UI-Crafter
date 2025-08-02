@@ -115,6 +115,7 @@ export const PreView = ({ selectEntrie, entries }: PreViewProps) => {
 							{
 								bodyIndex > -1 ? (
 									<h3 style={{
+										fontFamily: '"Minecraft", sans-serif',
 										marginBlock: "7px",
 										color: "var(--color-white)",
 										overflowWrap: "break-word",

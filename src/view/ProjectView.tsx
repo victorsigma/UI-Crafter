@@ -34,9 +34,11 @@ import { defineTheme, monacoThemes } from "../libs/defineTheme";
 import { UndoRedoStack } from "../services/UndoRedoStack";
 import { ExportManager } from "../services/ExportManager";
 import { ProjectDB } from "../services/ProjectDB";
+import { useMediaQuery } from "react-responsive";
 
 
 export const ProjectView = () => {
+    const isMobil = useMediaQuery({ query: '(max-width: 439px)' })
 	const projectData: ProjectModel = defaultProjectModel;
 
 	const { id } = useParams();
@@ -473,7 +475,7 @@ export const ProjectView = () => {
 						</EntryContextMenu>
 					</div>
 				</InlineSlider>
-				<ProjectMainPanel
+				{((isMobil && !expandedRight) || (isMobil && !expandedLeft)) && <ProjectMainPanel
 					expandedLeft={expandedLeft}
 					expandedRight={expandedRight}
 					entrie={entrie}
@@ -481,7 +483,16 @@ export const ProjectView = () => {
 					selectEntrie={selectEntrie}
 					onChange={onChange}
 					setEntries={setEntries}
-					handleUndoUpdate={handleUndoUpdate} />
+					handleUndoUpdate={handleUndoUpdate} />}
+				{(!isMobil) && <ProjectMainPanel
+					expandedLeft={expandedLeft}
+					expandedRight={expandedRight}
+					entrie={entrie}
+					entries={entries}
+					selectEntrie={selectEntrie}
+					onChange={onChange}
+					setEntries={setEntries}
+					handleUndoUpdate={handleUndoUpdate} />}
 
 				<InlineSlider type="right" expanded={expandedRight} onToggle={() => setExpandedRight(!expandedRight)}>
 					<EntryExplorer selectEntrie={selectEntrie} entrie={entrie} component={component} entries={entries} setEntries={setEntries}></EntryExplorer>

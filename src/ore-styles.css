@@ -788,9 +788,8 @@ body {
 
 
 /* Ore Label */
-
 .ore-label {
-    font-family: "Mc-Ten", sans-serif;
+    font-family: "Mc-Ten", sans-serif !important;
     font-size: var(--font-size-md);
     color: white;
 }
@@ -1686,11 +1685,11 @@ option:focus {
 }
 
 .ore-card__header h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+.ore-card__header h2,
+.ore-card__header h3,
+.ore-card__header h4,
+.ore-card__header h5,
+.ore-card__header h6 {
     font-family: "Minecraft", sans-serif;
 }
 
@@ -1893,11 +1892,11 @@ h6 {
 }
 
 .pe-card__header h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+.pe-card__header h2,
+.pe-card__header h3,
+.pe-card__header h4,
+.pe-card__header h5,
+.pe-card__header h6 {
     font-family: "Minecraft", sans-serif;
     margin-top: 20px;
     margin-bottom: 15px;
@@ -1989,4 +1988,48 @@ body.ore-modal-open {
 
 .ore-modal__button-close:hover {
     background-color: var(--color-dark-bg-alt);
+}
+
+
+.ore-carousel__content {
+    display: flex;
+    overflow-x: hidden;
+    box-sizing: border-box;
+    scroll-snap-type: x mandatory;
+    width: 100%;
+    height: max-content;
+    display: flex;
+    margin: 0px;
+    scroll-marker-group: after;
+    anchor-name: --myCarousel;
+}
+
+
+.ore-carousel__content::scroll-marker-group {
+    justify-self: anchor-center;
+
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.ore-carousel__content::scroll-marker {
+    content: "";
+    width: 16px;
+    height: 16px;
+    background-color: transparent;
+    border: 2px solid black;
+    border-radius: 50%;
+}
+
+.ore-carousel__content::scroll-marker:target-current {
+    background-color: rgb(255, 255, 255);
+}
+
+.ore-carousel__item {
+    list-style-type: none;
+    padding: 20px;
+
+    flex: 0 0 100%;
+    scroll-snap-align: center;
 }
